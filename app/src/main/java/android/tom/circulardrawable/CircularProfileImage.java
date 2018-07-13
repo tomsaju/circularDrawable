@@ -33,7 +33,7 @@ public class CircularProfileImage extends ConstraintLayout {
     private boolean cancelable;
     public String labelText;
     private int deviceWidth;
-
+    private String id;
     public CircularProfileImage(Context context) {
         super(context);
         this.context = context;
@@ -41,13 +41,14 @@ public class CircularProfileImage extends ConstraintLayout {
         init();
     }
 
-    public CircularProfileImage(Context context,Drawable profileImage,String name,boolean cancelable) {
+    public CircularProfileImage(Context context,Drawable profileImage,String name,boolean cancelable,String id) {
         super(context);
         this.context = context;
         android.util.Log.d(TAG, "CircularProfileImage() returned: ");
         mDrawable = profileImage;
         labelText = name;
         this.cancelable = cancelable;
+        this.id=id;
         init();
     }
 
@@ -105,6 +106,9 @@ public class CircularProfileImage extends ConstraintLayout {
         if(labelText!=null&&!labelText.isEmpty()){
             profileTextView.setText(labelText);
         }
+        if(id!=null&&!id.isEmpty()){
+            profileTextView.setTag(id);
+        }
         if(cancelable){
             closeButton.setVisibility(View.VISIBLE);
         }else{
@@ -114,7 +118,7 @@ public class CircularProfileImage extends ConstraintLayout {
         closeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCircularProfileImageListener.onProfileClosed(labelText);
+                mCircularProfileImageListener.onProfileClosed(((String)profileTextView.getTag()).toString());
             }
         });
 

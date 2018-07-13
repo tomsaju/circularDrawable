@@ -8,13 +8,14 @@
     android:layout_height="wrap_content"
     android:layout_centerInParent="true">
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/profile_user"
         android:id="@+id/imageview"/>
 
     <Button
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignEnd="@+id/imageview"
         android:layout_alignTop="@+id/imageview"
         android:background="@drawable/closebtn"
@@ -22,7 +23,7 @@
         app:layout_constraintCircleAngle="45"
         android:alpha="0.7"
         android:id="@+id/close_button"
-        app:layout_constraintCircleRadius="45dp"/>
+        app:layout_constraintCircleRadius="40dp"/>
 
     <TextView xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"

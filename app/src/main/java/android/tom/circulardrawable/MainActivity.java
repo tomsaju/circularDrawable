@@ -13,6 +13,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -24,11 +25,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity implements CircularProfileImage.ICircularProfileImageListener{
 
     private CircularProfileImage profileImage;
-
+    private HorizontalScrollView scrollParent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        scrollParent = (HorizontalScrollView) findViewById(R.id.scrollParent);
 
 
 
@@ -46,22 +48,14 @@ public class MainActivity extends AppCompatActivity implements CircularProfileIm
         namelist.add("hazard");
         namelist.add("pete");
         namelist.add("charles");
-
+        container.removeAllViews();
         for (int i = 0; i <namelist.size() ; i++) {
-             profileImage = new CircularProfileImage(this,getResources().getDrawable(R.drawable.pete),namelist.get(i),true);
+             profileImage = new CircularProfileImage(this,getResources().getDrawable(R.drawable.pete),namelist.get(i),true,namelist.get(i)+" id ");
             profileImage.setProfileImageListener(this);
             container.addView(profileImage);
         }
 
-        profileImage = new CircularProfileImage(this,getResources().getDrawable(R.drawable.pete),namelist.get(1),true);
-        profileImage.setProfileImageListener(this);
-        container.addView(profileImage);
-        profileImage = new CircularProfileImage(this,getResources().getDrawable(R.drawable.pete),namelist.get(2),true);
-        profileImage.setProfileImageListener(this);
-        container.addView(profileImage);
-        profileImage = new CircularProfileImage(this,getResources().getDrawable(R.drawable.pete),namelist.get(0),true);
-        profileImage.setProfileImageListener(this);
-        container.addView(profileImage);
+
 
     }
 
